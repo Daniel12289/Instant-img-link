@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b14">
+<title>PIXORA — Image Link Studio</title>
+<style>
+:root{--bg:#080b14;--line:#25314a;--text:#f4f7ff;--muted:#9aa8c2;--accent:#8b7cff;--accent2:#55d6be}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1c2250 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer;border:0}.hidden{display:none!important}.wrap{max-width:1180px;margin:auto;padding:20px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 22px}.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.12em}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#a18cff,#55d6be);display:grid;place-items:center;color:#07101a;font-size:22px;font-weight:1000;box-shadow:0 8px 30px #8b7cff44}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;font-weight:600}.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}.pill.on{color:#9ef0cb;border-color:#1d5a49}.pill.off{color:#ffc0c7;border-color:#713247}.hero{padding:28px 0 24px}.eyebrow{color:var(--accent2);font-size:11px;letter-spacing:.18em;font-weight:800}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:10px 0;letter-spacing:-.045em}.gradient{background:linear-gradient(90deg,#b4a8ff,#6fe7d0);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:600px;margin:0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:linear-gradient(160deg,#141c2e,#0e1422);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 14px 40px #0002}.span-8{grid-column:span 8}.span-4{grid-column:span 4}.card h2,.card h3{margin:0 0 8px}.muted{color:var(--muted)}.small{font-size:12px}.field{display:grid;gap:7px;margin:13px 0}.field label{font-size:12px;color:#bdc8dd;font-weight:700}.field input{width:100%;background:#090f1c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:13px 14px;outline:none}.field input:focus{border-color:var(--accent)}.btn{border-radius:12px;padding:12px 16px;font-weight:800;background:linear-gradient(135deg,#9b8bff,#67dfc8);color:#07111c}.btn.secondary{background:#1b2740;color:var(--text);border:1px solid var(--line)}.btn.danger{background:#3a1c2a;color:#ffb8c1;border:1px solid #713247}.btn.sm{padding:8px 11px;font-size:12px}.btn:disabled{opacity:.5;cursor:not-allowed}.linkbtn{background:none;color:var(--accent);padding:6px 0;font-size:12px;text-decoration:underline}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}.tab{padding:9px 13px;border-radius:10px;background:#111a2b;color:var(--muted);border:1px solid var(--line)}.tab.active{color:white;border-color:var(--accent);background:#29234c}.stat{font-size:30px;font-weight:900;letter-spacing:-.04em}.stat-label{font-size:12px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.statbox{background:#0a1120;border:1px solid var(--line);padding:15px;border-radius:15px}.drop{border:1px dashed #526184;border-radius:16px;padding:24px;text-align:center;background:#0a1120;transition:.15s}.drop.over{border-color:var(--accent2);background:#0d1a2a}.drop input{max-width:100%}.preview{width:100%;max-height:280px;object-fit:contain;border-radius:14px;margin-top:12px;background:#080b14}.notice{padding:12px 14px;border-radius:12px;background:#18243a;color:#bdc9df;font-size:12px;margin:12px 0}.notice.good{background:#102c29;color:#a9f1d5}.notice.bad{background:#351b27;color:#ffc0c7}.rowitem{padding:13px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.rowitem:last-child{border:0}.thumb{width:54px;height:54px;object-fit:cover;border-radius:10px;background:#080b14;flex:none}.rowleft{display:flex;align-items:center;gap:11px;min-width:0}.rowleft div{min-width:0}.rowleft strong{display:block;overflow-wrap:anywhere}.link{color:#a99cff;overflow-wrap:anywhere;font-size:12px}.badge{font-size:10px;padding:4px 8px;border-radius:999px;background:#25304a;color:#cbd6ef}.badge.ok{background:#12372e;color:#9ef0cb}.badge.wait{background:#3a2c16;color:#f7d48b}.badge.no{background:#3a1c2a;color:#ffb8c1}table{width:100%;border-collapse:collapse;font-size:12px}td,th{text-align:left;padding:10px 7px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted)}.tablewrap{overflow:auto}.auth{max-width:460px;margin:28px auto}.auth .card{padding:24px}.footer{padding:30px 0;color:#66748d;text-align:center;font-size:11px}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#f4f7ff;color:#101626;padding:11px 16px;border-radius:12px;font-weight:800;box-shadow:0 8px 30px #0006;z-index:10;max-width:90%;text-align:center}.inline{display:flex;gap:8px;align-items:center}.adminmark{color:#b7adff}.bar{height:8px;border-radius:99px;background:#0a1120;border:1px solid var(--line);overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#9b8bff,#67dfc8);transition:width .15s}.rowbtns{display:flex;gap:6px;flex:none}.paybox{white-space:pre-wrap;font-size:13px;color:#e6ecff}
+@media(max-width:760px){.wrap{padding:14px}.span-8,.span-4{grid-column:span 12}.card{padding:16px}.top{align-items:flex-start}.hero{padding-top:15px}.rowitem{align-items:flex-start;flex-wrap:wrap}.stats .stat{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="brand"><div class="logo">P</div><div>PIXORA<small>IMAGE LINK STUDIO</small></div></div>
+ <div class="inline"><span class="pill" id="connectionState">Connecting…</span><button class="btn secondary sm hidden" id="logoutBtn">Log out</button></div>
+</header>
+<section class="hero">
+ <div class="eyebrow">UPLOAD · HOST · SHARE</div>
+ <h1>Your images.<br><span class="gradient">One clean link.</span></h1>
+ <p>Upload an image, create a shareable link and keep your image library organised.</p>
+</section>
+
+<section id="authView" class="auth">
+ <div class="card">
+  <div class="eyebrow">WELCOME TO PIXORA</div><h2 id="authTitle">Sign in</h2>
+  <p class="muted small">Use your email and password to access your workspace.</p>
+  <div class="field"><label>Email address</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+  <div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Your password"></div>
+  <div class="actions"><button class="btn" id="authAction">Sign in</button><button class="btn secondary" id="toggleAuth">Create account</button></div>
+  <button class="linkbtn" id="forgotBtn">Forgot password?</button>
+  <div id="authMessage" class="notice hidden"></div>
+ </div>
+</section>
+
+<main id="appView" class="hidden">
+ <div class="stats" style="margin-bottom:16px">
+  <div class="statbox"><div class="stat" id="creditCount">0</div><div class="stat-label">LINK CREDITS</div></div>
+  <div class="statbox"><div class="stat" id="linkCount">0</div><div class="stat-label">LINKS CREATED</div></div>
+  <div class="statbox"><div class="stat" id="paymentCount">0</div><div class="stat-label">PAYMENTS</div></div>
+ </div>
+ <div class="tabs">
+  <button class="tab active" data-tab="studio">Image studio</button>
+  <button class="tab" data-tab="history">My links</button>
+  <button class="tab" data-tab="credits">Get credits</button>
+  <button class="tab hidden" id="adminTab" data-tab="admin">Admin panel</button>
+ </div>
+ <section id="studioPanel" class="grid">
+  <div class="card span-8">
+   <div class="eyebrow">IMAGE STUDIO</div><h2>Upload an image</h2>
+   <p class="muted small">Choose or drop an image. Maximum 3 MB; large photos are compressed automatically. Each successful upload uses 1 credit.</p>
+   <div class="drop" id="dropZone"><p>Choose or drop an image</p><input id="imageFile" type="file" accept="image/*"><img id="imagePreview" class="preview hidden" alt="Selected image preview"></div>
+   <div class="bar hidden" id="progressBar"><i id="progressFill"></i></div>
+   <div class="field"><label>Image title (optional)</label><input id="imageTitle" maxlength="80" placeholder="e.g. Product photo"></div>
+   <div class="actions"><button class="btn" id="uploadBtn">Upload & create link — 1 credit</button></div>
+   <div id="uploadMessage" class="notice hidden"></div>
+   <div id="latestLink" class="notice hidden"></div>
+  </div>
+  <div class="card span-4">
+   <div class="eyebrow">HOW IT WORKS</div><h3>Simple sharing</h3>
+   <ol class="muted small" style="padding-left:18px;line-height:2"><li>Create an account.</li><li>Add credits from the credits tab.</li><li>Upload an image.</li><li>Copy your generated image URL.</li></ol>
+   <div class="notice">Credit package: <strong>₦500 = 5 link credits</strong>. One credit is used for each image link.</div>
+   <p class="muted small">Anyone with a link can view that image, so only upload images you are happy to share.</p>
+  </div>
+ </section>
+ <section id="historyPanel" class="card hidden">
+  <div class="eyebrow">YOUR LIBRARY</div><h2>My image links</h2><div id="historyList" class="muted small">Loading links…</div>
+ </section>
+ <section id="creditsPanel" class="grid hidden">
+  <div class="card span-4"><div class="eyebrow">CREDIT PACKAGE</div><h2>5 link credits</h2><div class="stat">₦500</div><p class="muted small">Submit payment and upload your receipt for admin review. Credits are added only after approval.</p></div>
+  <div class="card span-8">
+   <div class="eyebrow">PAYMENT REQUEST</div><h2>Request credits</h2>
+   <div class="notice"><strong>Pay to:</strong><div id="paymentDetails" class="paybox">Payment details have not been added yet. Please check back shortly.</div></div>
+   <div class="field"><label>Payment reference / transfer description</label><input id="paymentReference" maxlength="100" placeholder="Enter your transfer reference"></div>
+   <div class="field"><label>Receipt image (optional)</label><input id="receiptFile" type="file" accept="image/*"></div>
+   <button class="btn" id="submitPaymentBtn">Submit payment for review</button>
+   <div id="paymentMessage" class="notice hidden"></div>
+   <h3 style="margin-top:22px">Your payment requests</h3><div id="myPayments" class="muted small">Loading…</div>
+  </div>
+ </section>
+ <section id="adminPanel" class="hidden">
+  <div class="card" style="margin-bottom:16px">
+   <div class="eyebrow adminmark">ADMINISTRATION</div><h2>PIXORA control room</h2>
+   <p class="muted small">Credits and approvals are enforced on the Floot server, not in this page.</p>
+   <div class="field"><label>Payment destination details shown to users</label><input id="adminPaymentDetails" maxlength="300" placeholder="Bank name · Account name · Account number"></div>
+   <div class="actions"><button class="btn" id="savePaymentDetails">Save payment details</button><button class="btn secondary" id="refreshAdmin">Refresh</button></div><div id="adminMessage" class="notice hidden"></div>
+  </div>
+  <div class="card" style="margin-bottom:16px"><h3>Pending payment requests</h3><div id="pendingPayments" class="tablewrap">Loading…</div></div>
+  <div class="card"><h3>Recent users</h3><div id="adminUsers" class="tablewrap">Loading…</div></div>
+ </section>
+</main>
+<div class="footer">PIXORA · Image Link Studio</div>
+</div>
+<div id="toast" class="toast hidden"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+/* Firebase handles sign-in and image file storage. Credits, links and payments live on the Floot backend. */
+const firebaseConfig = {
+ apiKey: "AIzaSyAJpJYMooqEs0VKT1YZL-nne-cNv4BcSPI",
+ authDomain: "tomini-mart.firebaseapp.com",
+ projectId: "tomini-mart",
+ storageBucket: "tomini-mart.firebasestorage.app",
+ messagingSenderId: "707213630195",
+ appId: "1:707213630195:web:687916ead8176c12e93586"
+};
+const API = "https://fablockauth.floot.app/_api/pixora/";
+const MAX_IMAGE_BYTES = 3*1024*1024;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const $ = id => document.getElementById(id);
+let currentUser=null, isAdmin=false, isSignup=false, selectedFile=null, receipt=null;
+let state={credits:0,links:[],payments:[],paymentDetails:""};
+
+function toast(m){const t=$("toast");t.textContent=m;t.classList.remove("hidden");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.add("hidden"),2800)}
+function message(id,text,type=""){const el=$(id);el.textContent=text;el.className="notice"+(type?" "+type:"");el.classList.remove("hidden")}
+function safeText(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function dateText(v){if(!v)return "Just now";const d=new Date(v);return isNaN(d)?"":d.toLocaleString()}
+function showTab(tab){
+ ["studio","history","credits","admin"].forEach(x=>$(x+"Panel").classList.toggle("hidden",x!==tab));
+ document.querySelectorAll(".tab[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ if(currentUser&&tab!=="studio")refresh().catch(()=>{});
+ if(tab==="admin")loadAdmin();
+}
+document.querySelectorAll(".tab[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
+
+function setConn(){const p=$("connectionState"),on=navigator.onLine;p.textContent=on?(currentUser?"Signed in":"Connected"):"Offline";p.className="pill "+(on?"on":"off")}
+addEventListener("online",setConn);addEventListener("offline",setConn);setConn();
+
+/* ---------- Floot API ---------- */
+async function api(name,body={}){
+ if(!currentUser)throw new Error("Sign in first.");
+ const token=await currentUser.getIdToken();
+ const res=await fetch(API+name,{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify(body)});
+ let data=null;try{data=await res.json()}catch{}
+ if(!res.ok)throw new Error(data?.error||"Server error ("+res.status+")");
+ return data;
+}
+async function refresh(){
+ const d=await api("me");
+ state=d;isAdmin=!!d.isAdmin;
+ $("adminTab").classList.toggle("hidden",!isAdmin);
+ renderAll();
+}
+function renderAll(){
+ $("creditCount").textContent=state.credits;
+ $("linkCount").textContent=state.links.length;
+ $("paymentCount").textContent=state.payments.length;
+ $("paymentDetails").textContent=state.paymentDetails||"Payment details have not been added yet. Please check back shortly.";
+ renderLinks();renderMyPayments();
+}
+
+/* ---------- Auth ---------- */
+$("toggleAuth").onclick=()=>{isSignup=!isSignup;$("authTitle").textContent=isSignup?"Create your account":"Sign in";$("authAction").textContent=isSignup?"Create account":"Sign in";$("toggleAuth").textContent=isSignup?"Back to sign in":"Create account";$("password").autocomplete=isSignup?"new-password":"current-password";$("authMessage").classList.add("hidden")};
+$("authAction").onclick=doAuth;
+$("password").addEventListener("keydown",e=>{if(e.key==="Enter")doAuth()});
+async function doAuth(){
+ const email=$("email").value.trim().toLowerCase(),password=$("password").value;
+ if(!email||!password)return message("authMessage","Enter your email and password.","bad");
+ if(password.length<6)return message("authMessage","Password must be at least 6 characters.","bad");
+ $("authAction").disabled=true;
+ try{
+  if(isSignup)await createUserWithEmailAndPassword(auth,email,password);
+  else await signInWithEmailAndPassword(auth,email,password);
+ }catch(e){message("authMessage",friendlyError(e),"bad")}
+ finally{$("authAction").disabled=false}
+}
+$("forgotBtn").onclick=async()=>{
+ const email=$("email").value.trim();
+ if(!email)return message("authMessage","Enter your email above first, then tap Forgot password.","bad");
+ try{await sendPasswordResetEmail(auth,email);message("authMessage","Password reset email sent. Check your inbox.","good")}
+ catch(e){message("authMessage",friendlyError(e),"bad")}
+};
+function friendlyError(e){
+ const code=e?.code||"";
+ return ({"auth/email-already-in-use":"This email already has an account.","auth/invalid-credential":"Email or password is incorrect.","auth/user-not-found":"No account found for this email.","auth/weak-password":"Choose a stronger password.","auth/invalid-email":"Enter a valid email address.","auth/too-many-requests":"Too many attempts. Try again later.","auth/network-request-failed":"Network problem. Check your connection.","auth/operation-not-allowed":"Enable Email/Password sign-in in Firebase Authentication.","storage/unauthorized":"Firebase Storage rules blocked this upload. Publish the PIXORA storage rules.","storage/canceled":"Upload cancelled.","storage/retry-limit-exceeded":"Upload timed out. Try again."})[code]||(e?.message==="Failed to fetch"?"Cannot reach the PIXORA server. Check your connection.":e?.message)||"Something went wrong.";
+}
+$("logoutBtn").onclick=()=>signOut(auth);
+
+onAuthStateChanged(auth,async user=>{
+ currentUser=user;setConn();
+ $("authView").classList.toggle("hidden",!!user);
+ $("appView").classList.toggle("hidden",!user);
+ $("logoutBtn").classList.toggle("hidden",!user);
+ if(!user){isAdmin=false;state={credits:0,links:[],payments:[],paymentDetails:""};return}
+ showTab("studio");
+ try{await refresh()}catch(e){toast(friendlyError(e))}
+});
+
+/* ---------- Image picking, drag & drop, compression ---------- */
+function pickFile(f){
+ if(!f){selectedFile=null;$("imagePreview").classList.add("hidden");return}
+ if(!/^image\/(png|jpeg|webp|gif|avif)$/.test(f.type)){selectedFile=null;$("imageFile").value="";return message("uploadMessage","Use a PNG, JPG, WebP or GIF image.","bad")}
+ selectedFile=f;
+ if($("imagePreview").dataset.url)URL.revokeObjectURL($("imagePreview").dataset.url);
+ const u=URL.createObjectURL(f);$("imagePreview").dataset.url=u;$("imagePreview").src=u;$("imagePreview").classList.remove("hidden");$("uploadMessage").classList.add("hidden");
+}
+$("imageFile").onchange=e=>pickFile(e.target.files?.[0]||null);
+const dz=$("dropZone");
+["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add("over")}));
+["dragleave","drop"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove("over")}));
+dz.addEventListener("drop",e=>pickFile(e.dataTransfer?.files?.[0]||null));
+
+async function compressIfNeeded(file){
+ if(file.size<=1024*1024||!/^image\/(jpeg|png|webp)$/.test(file.type))return file;
+ try{
+  const bmp=await createImageBitmap(file),max=2400,scale=Math.min(1,max/Math.max(bmp.width,bmp.height));
+  const c=document.createElement("canvas");c.width=Math.round(bmp.width*scale);c.height=Math.round(bmp.height*scale);
+  c.getContext("2d").drawImage(bmp,0,0,c.width,c.height);
+  const type=file.type==="image/png"&&file.size<3*1024*1024?"image/png":"image/jpeg";
+  const blob=await new Promise(r=>c.toBlob(r,type,.86));
+  return blob&&blob.size<file.size?new File([blob],file.name.replace(/\.\w+$/,"")+(type==="image/png"?".png":".jpg"),{type}):file;
+ }catch{return file}
+}
+function fileToDataUrl(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(new Error("Could not read the image."));r.readAsDataURL(f)})}
+function setProgress(p){const b=$("progressBar");b.classList.toggle("hidden",p===null);if(p!==null)$("progressFill").style.width=p+"%"}
+
+/* ---------- Upload ---------- */
+$("uploadBtn").onclick=async()=>{
+ if(!selectedFile)return message("uploadMessage","Choose an image first.","bad");
+ if(state.credits<1){message("uploadMessage","You need at least 1 link credit. Open Get credits to submit a payment request.","bad");return showTab("credits")}
+ $("uploadBtn").disabled=true;let sref=null;
+ try{
+  const file=await compressIfNeeded(selectedFile);
+  if(file.size>MAX_IMAGE_BYTES)throw new Error("Image is still larger than 3 MB after compression. Choose a smaller one.");
+  const uid=currentUser.uid,fileId=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2)).replace(/-/g,"");
+  /* The photo goes to the Floot server, which stores it and spends the credit in one step. */
+  setProgress(40);message("uploadMessage","Uploading…");
+  const dataBase64=(await fileToDataUrl(file)).split(",")[1];
+  setProgress(70);
+  /* The server spends the credit and saves the link in one transaction. */
+  const out=await api("link_create",{title:$("imageTitle").value.trim()||selectedFile.name,contentType:file.type,dataBase64});
+  const url=out.link.url;
+  sref=null;
+  $("latestLink").innerHTML=`<strong>Link created successfully.</strong><div class="link">${safeText(url)}</div><div class="actions"><button class="btn secondary sm" id="copyLatest">Copy link</button></div>`;
+  $("latestLink").classList.remove("hidden");$("copyLatest").onclick=()=>copyText(url);
+  message("uploadMessage","Image uploaded. 1 credit used. "+out.credits+" left.","good");
+  selectedFile=null;$("imageFile").value="";$("imagePreview").classList.add("hidden");$("imageTitle").value="";
+  await refresh();
+ }catch(e){
+  /* nothing to clean up: the server only keeps the photo when the credit was spent */
+  message("uploadMessage",friendlyError(e),"bad");
+  refresh().catch(()=>{});
+ }finally{setProgress(null);$("uploadBtn").disabled=false}
+};
+
+function copyText(text){if(navigator.clipboard?.writeText)navigator.clipboard.writeText(text).then(()=>toast("Copied to clipboard")).catch(()=>fallbackCopy(text));else fallbackCopy(text)}
+function fallbackCopy(text){const t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();try{document.execCommand("copy");toast("Copied to clipboard")}catch{toast("Copy unavailable; select the link manually")}t.remove()}
+
+/* ---------- Library ---------- */
+function renderLinks(){
+ const items=state.links;
+ if(!items.length){$("historyList").textContent="No image links yet. Upload your first image in Image studio.";return}
+ $("historyList").innerHTML=items.map(x=>`<div class="rowitem"><div class="rowleft"><img class="thumb" loading="lazy" src="${safeText(x.url)}" alt=""><div><strong>${safeText(x.title||"Image")}</strong><span class="link">${safeText(x.url)}</span><div class="muted small">${dateText(x.createdAt)}</div></div></div><div class="rowbtns"><button class="btn secondary sm" data-copy="${safeText(x.id)}">Copy</button><button class="btn danger sm" data-del="${safeText(x.id)}">Delete</button></div></div>`).join("");
+ $("historyList").querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>copyText(state.links.find(l=>l.id===b.dataset.copy).url));
+ $("historyList").querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>deleteLink(b.dataset.del,b));
+}
+async function deleteLink(id,btn){
+ const x=state.links.find(l=>l.id===id);if(!x||!confirm("Delete this link? The image will stop loading for anyone who has the link. This does not refund the credit."))return;
+ btn.disabled=true;
+ try{
+  await api("link_delete",{id});
+  toast("Link deleted");await refresh();
+ }catch(e){toast(friendlyError(e));btn.disabled=false}
+}
+
+/* ---------- Payments ---------- */
+$("receiptFile").onchange=e=>{receipt=e.target.files?.[0]||null;if(receipt&&(!receipt.type.startsWith("image/")||receipt.size>MAX_IMAGE_BYTES)){receipt=null;e.target.value="";message("paymentMessage","Receipt must be an image no larger than 3 MB.","bad")}};
+$("submitPaymentBtn").onclick=async()=>{
+ const reference=$("paymentReference").value.trim();
+ if(!reference)return message("paymentMessage","Enter your transfer reference before submitting.","bad");
+ $("submitPaymentBtn").disabled=true;
+ try{
+  const body={reference};
+  if(receipt){
+   const rf=await compressIfNeeded(receipt);
+   body.receiptBase64=(await fileToDataUrl(rf)).split(",")[1];body.receiptType=rf.type;
+  }
+  await api("payment_submit",body);
+  $("paymentReference").value="";$("receiptFile").value="";receipt=null;
+  message("paymentMessage","Payment request submitted. Credits will be added after admin approval.","good");
+  await refresh();
+ }catch(e){message("paymentMessage",friendlyError(e),"bad")}
+ finally{$("submitPaymentBtn").disabled=false}
+};
+function renderMyPayments(){
+ const rows=state.payments;
+ const cls=s=>s==="approved"?"ok":s==="rejected"?"no":"wait";
+ $("myPayments").innerHTML=rows.length?rows.map(p=>`<div class="rowitem"><div><strong>₦${Number(p.amount)||500} · ${Number(p.credits)||5} credits</strong><div class="muted small">${safeText(p.reference||"")} · ${dateText(p.createdAt)}</div></div><span class="badge ${cls(p.status)}">${safeText(p.status||"pending")}</span></div>`).join(""):"No payment requests yet.";
+}
+
+/* ---------- Admin ---------- */
+async function loadAdmin(){
+ if(!isAdmin)return;
+ try{
+  const d=await api("admin_overview");
+  $("adminPaymentDetails").value=d.paymentDetails||"";
+  $("pendingPayments").innerHTML=d.pending.length?`<table><thead><tr><th>User / reference</th><th>Amount</th><th>Receipt</th><th>Action</th></tr></thead><tbody>${d.pending.map(p=>`<tr><td>${safeText(p.email)}<br>${safeText(p.reference)}<br><span class="muted">${dateText(p.createdAt)}</span></td><td>₦${Number(p.amount)||0} / ${Number(p.credits)||0} credits</td><td>${p.receiptUrl?`<a class="link" href="${safeText(p.receiptUrl)}" target="_blank" rel="noopener">View receipt</a>`:"No receipt"}</td><td><button class="btn sm" data-approve="${safeText(p.id)}">Approve</button> <button class="btn danger sm" data-reject="${safeText(p.id)}">Reject</button></td></tr>`).join("")}</tbody></table>`:"No pending payment requests.";
+  $("pendingPayments").querySelectorAll("[data-approve]").forEach(b=>b.onclick=()=>reviewPayment(b.dataset.approve,"approved",b));
+  $("pendingPayments").querySelectorAll("[data-reject]").forEach(b=>b.onclick=()=>reviewPayment(b.dataset.reject,"rejected",b));  $("adminUsers").innerHTML=d.users.length?`<table><thead><tr><th>Email</th><th>Credits</th><th>Joined</th></tr></thead><tbody>${d.users.map(u=>`<tr><td>${safeText(u.email)}</td><td>${Number(u.credits)||0}</td><td>${dateText(u.createdAt)}</td></tr>`).join("")}</tbody></table>`:"No users yet.";
+ }catch(e){toast(friendlyError(e))}
+}
+$("refreshAdmin").onclick=loadAdmin;
+async function reviewPayment(id,decision,btn){
+ btn.disabled=true;
+ try{
+  const out=await api("admin_review",{id,decision});
+  toast(decision==="approved"?`Approved. ${out.creditsAdded} credits added.`:"Payment rejected.");
+  await loadAdmin();
+ }catch(e){toast(friendlyError(e));btn.disabled=false;loadAdmin()}
+}
+$("savePaymentDetails").onclick=async()=>{
+ try{await api("admin_settings",{paymentDetails:$("adminPaymentDetails").value.trim()});message("adminMessage","Payment details saved. Users can see them now.","good")}
+ catch(e){message("adminMessage",friendlyError(e),"bad")}
+};
+</script>
+</body>
+</html>
